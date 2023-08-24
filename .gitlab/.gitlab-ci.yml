@@ -1,0 +1,60 @@
+variables:
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version"
+  BUILD_IMAGE: $INTERNAL_DOCKER_REGISTRY/$INTERNAL_IMAGE_NAME
+
+# Variables used from the "Outside"
+# INTERNAL_DOCKER_REGISTRY
+# INTERNAL_IMAGE_NAME
+# DEPENDENCYTRACK_TOKEN
+
+stages:
+  - check
+  - build
+  - deploy
+
+java dependencies:
+  stage: check
+  image: $BUILD_IMAGE
+  script:
+    - mvn $MAVEN_CLI_OPTS -P dependencies-list
+      cyclonedx:makeAggregateBom
+    - mvn $MAVEN_CLI_OPTS -P dependencies-list
+      dependency-track:upload-bom
+      -Ddependency-track.apiKey="$DEPENDENCYTRACK_TOKEN"
+    - mvn $MAVEN_CLI_OPTS -P dependencies-check
+      dependency-track:check-metrics
+      -DdependencyTrackApiKey="$DEPENDENCYTRACK_TOKEN"
+  only:
+    - dev-main
+    - main
+    
+check unittests:
+  stage: check
+  image: $BUILD_IMAGE
+  script:
+    - mvn $MAVEN_CLI_OPTS clean test
+  artifacts:
+    when: always
+    paths:
+      - "*/*/target/surefire-reports/TEST-*.xml"
+    reports:
+      junit: "*/*/target/surefire-reports/TEST-*.xml"
+  only:
+    - main
+    - dev-main
+    - tags
+    - merge_requests
+
+build:
+  image: $BUILD_IMAGE
+  stage: build
+  script: 
+    - mvn $MAVEN_CLI_OPTS install
+
+job deploy:
+  image: $BUILD_IMAGE
+  stage: deploy
+  script:
+    - mvn deploy -DskipTests
+  only:
+    - tags
