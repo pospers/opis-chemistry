@@ -18,8 +18,6 @@
  */
 package org.apache.chemistry.opencmis.bridge;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.chemistry.opencmis.commons.server.CallContext;
 import org.apache.chemistry.opencmis.commons.spi.AclService;
 import org.apache.chemistry.opencmis.commons.spi.CmisBinding;
@@ -31,6 +29,8 @@ import org.apache.chemistry.opencmis.commons.spi.PolicyService;
 import org.apache.chemistry.opencmis.commons.spi.RelationshipService;
 import org.apache.chemistry.opencmis.commons.spi.RepositoryService;
 import org.apache.chemistry.opencmis.commons.spi.VersioningService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Provides a framework to cache a {@link CmisBinding} object for a

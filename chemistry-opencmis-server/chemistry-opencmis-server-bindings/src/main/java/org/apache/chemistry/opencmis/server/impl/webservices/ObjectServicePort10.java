@@ -18,11 +18,11 @@
  */
 package org.apache.chemistry.opencmis.server.impl.webservices;
 
-import javax.jws.WebService;
-import javax.xml.bind.annotation.XmlSeeAlso;
-
 import org.apache.chemistry.opencmis.commons.impl.jaxb.ObjectFactory;
 import org.apache.chemistry.opencmis.commons.impl.jaxb.ObjectServicePort;
+
+import jakarta.jws.WebService;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
 
 @WebService(name = "ObjectServicePort", targetNamespace = "http://docs.oasis-open.org/ns/cmis/ws/200908/")
 @XmlSeeAlso({ ObjectFactory.class })

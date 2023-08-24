@@ -21,9 +21,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <!-- requires at least Java 8 -->
-                    <target>1.8</target>
-                    <source>1.8</source>
+                    <target>17</target>
+                    <source>17</source>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -32,21 +31,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.chemistry.opencmis</groupId>
+            <groupId>com.kgs-software</groupId>
             <artifactId>chemistry-opencmis-server-support</artifactId>
             <version>\${opencmis.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.chemistry.opencmis</groupId>
+            <groupId>com.kgs-software</groupId>
             <artifactId>chemistry-opencmis-server-bindings</artifactId>
             <version>\${opencmis.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+		    <groupId>jakarta.servlet</groupId>
+		    <artifactId>jakarta.servlet-api</artifactId>
+		    <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

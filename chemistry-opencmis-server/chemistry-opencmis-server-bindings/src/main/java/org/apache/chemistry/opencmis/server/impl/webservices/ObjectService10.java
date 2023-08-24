@@ -20,11 +20,6 @@ package org.apache.chemistry.opencmis.server.impl.webservices;
 
 import java.math.BigInteger;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
-import javax.xml.ws.Holder;
-import javax.xml.ws.soap.MTOM;
-
 import org.apache.chemistry.opencmis.commons.impl.jaxb.CmisAccessControlListType;
 import org.apache.chemistry.opencmis.commons.impl.jaxb.CmisBulkUpdateType;
 import org.apache.chemistry.opencmis.commons.impl.jaxb.CmisContentStreamType;
@@ -34,6 +29,11 @@ import org.apache.chemistry.opencmis.commons.impl.jaxb.CmisFaultType;
 import org.apache.chemistry.opencmis.commons.impl.jaxb.CmisObjectIdAndChangeTokenType;
 import org.apache.chemistry.opencmis.commons.impl.jaxb.CmisPropertiesType;
 import org.apache.chemistry.opencmis.commons.impl.jaxb.EnumServiceException;
+
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebService;
+import jakarta.xml.ws.Holder;
+import jakarta.xml.ws.soap.MTOM;
 
 /**
  * CMIS 1.0 Object Service. Excludes CMIS 1.1 operations.

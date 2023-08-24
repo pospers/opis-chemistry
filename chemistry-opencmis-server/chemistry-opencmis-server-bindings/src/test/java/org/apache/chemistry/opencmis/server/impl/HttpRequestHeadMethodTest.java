@@ -18,7 +18,6 @@
  */
 package org.apache.chemistry.opencmis.server.impl;
 
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -29,15 +28,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
-
-import javax.servlet.Servlet;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.WriteListener;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.chemistry.opencmis.commons.data.CacheHeaderContentStream;
 import org.apache.chemistry.opencmis.commons.server.CallContext;
@@ -50,7 +40,17 @@ import org.apache.chemistry.opencmis.server.shared.Dispatcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.WriteListener;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class HttpRequestHeadMethodTest {
     private static final String CONTEXT_PATH = "/context";
@@ -88,7 +88,7 @@ public class HttpRequestHeadMethodTest {
         when(this.request.getContextPath()).thenReturn(CONTEXT_PATH);
         when(this.config.getServletContext()).thenReturn(context);
         when(this.context.getAttribute(CmisRepositoryContextListener.SERVICES_FACTORY)).thenReturn(cmisServiceFactory);
-        when(cmisServiceFactory.getService((CallContext) any())).thenReturn(cmisService);
+        when(cmisServiceFactory.getService((CallContext) Mockito.any())).thenReturn(cmisService);
     }
 
     @Test

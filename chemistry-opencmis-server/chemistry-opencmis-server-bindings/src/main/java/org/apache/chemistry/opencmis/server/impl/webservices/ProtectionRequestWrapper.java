@@ -21,13 +21,13 @@ package org.apache.chemistry.opencmis.server.impl.webservices;
 import java.io.IOException;
 import java.util.Locale;
 
-import javax.servlet.ReadListener;
-import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-
 import org.apache.chemistry.opencmis.commons.impl.MimeHelper;
+
+import jakarta.servlet.ReadListener;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
 
 /**
  * This request wrapper checks if the request is a multipart request (required

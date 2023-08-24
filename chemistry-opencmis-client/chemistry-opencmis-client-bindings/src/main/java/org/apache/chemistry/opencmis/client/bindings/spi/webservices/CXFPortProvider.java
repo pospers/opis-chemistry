@@ -25,10 +25,6 @@ import java.util.Map;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSocketFactory;
 import javax.xml.namespace.QName;
-import javax.xml.ws.Binding;
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.soap.MTOMFeature;
-import javax.xml.ws.soap.SOAPBinding;
 
 import org.apache.chemistry.opencmis.client.bindings.impl.CmisBindingsHelper;
 import org.apache.chemistry.opencmis.client.bindings.spi.BindingSession;
@@ -46,6 +42,11 @@ import org.apache.cxf.transports.http.configuration.HTTPClientPolicy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
+
+import jakarta.xml.ws.Binding;
+import jakarta.xml.ws.BindingProvider;
+import jakarta.xml.ws.soap.MTOMFeature;
+import jakarta.xml.ws.soap.SOAPBinding;
 
 /**
  * Apache CXF JAX-WS implementation.
@@ -107,7 +108,7 @@ public class CXFPortProvider extends AbstractPortProvider {
             bus.setProperty("bus.io.CachedOutputStream.MaxSize", "-1");
 
             if (getSession().get(SessionParameter.WEBSERVICES_TEMP_ENCRYPT, false)) {
-                bus.setProperty("bus.io.CachedOutputStream.CipherTransformation", "AES/CTR/PKCS5Padding");
+                bus.setProperty("bus.io.CachedOutputStream.CipherTransformation", "AES/CTR/NoPadding");
             }
 
             // add SOAP and HTTP authentication headers

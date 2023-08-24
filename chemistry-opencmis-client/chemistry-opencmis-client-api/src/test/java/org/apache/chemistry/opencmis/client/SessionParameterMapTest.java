@@ -31,7 +31,6 @@ import java.util.Map;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSocketFactory;
-import javax.xml.ws.handler.HandlerResolver;
 
 import org.apache.chemistry.opencmis.commons.SessionParameter;
 import org.apache.chemistry.opencmis.commons.enums.BindingType;
@@ -42,6 +41,8 @@ import org.apache.chemistry.opencmis.commons.server.TempStoreOutputStream;
 import org.apache.chemistry.opencmis.commons.spi.AuthenticationProvider;
 import org.junit.Test;
 import org.w3c.dom.Element;
+
+import jakarta.xml.ws.handler.HandlerResolver;
 
 public class SessionParameterMapTest {
 
