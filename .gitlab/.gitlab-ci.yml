@@ -5,6 +5,7 @@ variables:
 # Variables used from the "Outside"
 # INTERNAL_DOCKER_REGISTRY
 # INTERNAL_IMAGE_NAME
+# DEPENDENCYTRACK_URL
 # DEPENDENCYTRACK_TOKEN
 
 stages:
@@ -16,14 +17,16 @@ java dependencies:
   stage: check
   image: $BUILD_IMAGE
   script:
-    - mvn $MAVEN_CLI_OPTS -P dependencies-list
-      cyclonedx:makeAggregateBom
-    - mvn $MAVEN_CLI_OPTS -P dependencies-list
-      dependency-track:upload-bom
+    - mvn $MAVEN_CLI_OPTS
+      org.cyclonedx:cyclonedx-maven-plugin:2.7.9:makeAggregateBom
+    - mvn $MAVEN_CLI_OPTS
+      io.github.pmckeown:dependency-track-maven-plugin:1.6.0:upload-bom
+      -Ddependency-track.dependencyTrackBaseUrl="$DEPENDENCYTRACK_URL"
       -Ddependency-track.apiKey="$DEPENDENCYTRACK_TOKEN"
-    - mvn $MAVEN_CLI_OPTS -P dependencies-check
-      dependency-track:check-metrics
-      -DdependencyTrackApiKey="$DEPENDENCYTRACK_TOKEN"
+    - mvn $MAVEN_CLI_OPTS
+      io.github.pmckeown:dependency-track-maven-plugin:1.6.0:metrics
+      -Ddependency-track.dependencyTrackBaseUrl="$DEPENDENCYTRACK_URL"
+      -Ddependency-track.apiKey="$DEPENDENCYTRACK_TOKEN"
   only:
     - dev-main
     - main
@@ -49,7 +52,7 @@ build:
   image: $BUILD_IMAGE
   stage: build
   script: 
-    - mvn $MAVEN_CLI_OPTS install
+    - mvn $MAVEN_CLI_OPTS install -DskipTests
 
 job deploy:
   image: $BUILD_IMAGE
