@@ -57,7 +57,13 @@ build:
 job deploy:
   image: $BUILD_IMAGE
   stage: deploy
+  variables:
+    DISTRIBUTION_ID: $MAVEN_DISTRIBUTION_ID
+    DISTRIBUTION_URL: $INTERNAL_MAVEN_REPOSITORY
+    DISTRIBUTION_SNAPSHOT_ID: $MAVEN_DISTRIBUTION_ID
+    DISTRIBUTION_SNAPSHOT_URL: $INTERNAL_MAVEN_SNAPSHOT_REPOSITORY
   script:
     - mvn deploy -DskipTests
   only:
     - tags
+    - main
