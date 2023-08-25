@@ -31,24 +31,24 @@
 
     <groupId>com.kgs-software</groupId>
     <artifactId>chemistry-opencmis</artifactId>
-    <name>Apache Chemistry OpenCMIS</name>
+    <name>Chemistry OpenCMIS</name>
     <version>1.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <organization>
-        <name>The Apache Software Foundation</name>
-        <url>https://www.apache.org/</url>
+        <name>KGS Software GmbH</name>
+        <url>https://kgs-software.com/</url>
     </organization>
 
-    <url>https://chemistry.apache.org/java/</url>
+    <url>https://kgs-software.com/en/products#cmis</url>
 
     <ciManagement>
-        <system>Apache Build Server</system>
-        <url>https://builds.apache.org/view/A-D/view/Chemistry/</url>
+        <system>GitHub Workflows</system>
+        <url>https://github.com/kgs-software/chemistry-opencmis/tree/main/.github/workflows</url>
     </ciManagement>
     <inceptionYear>2009</inceptionYear>
     <description>
-        Apache Chemistry OpenCMIS is an open source implementation of the OASIS CMIS specification.
+        Chemistry OpenCMIS is an open source implementation of the OASIS CMIS specification.
     </description>
 
     <licenses>
@@ -60,43 +60,26 @@
     </licenses>
 
     <scm>
-        <connection>scm:svn:https://svn.apache.org/repos/asf/chemistry/opencmis/trunk</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/chemistry/opencmis/trunk</developerConnection>
-        <url>https://svn.apache.org/viewvc/chemistry/opencmis/trunk</url>
+        <connection>scm:git:https://github.com/kgs-software/chemistry-opencmis.git</connection>
+        <developerConnection>scm:git:https://github.com/kgs-software/chemistry-opencmis.git</developerConnection>
+        <url>https://github.com/kgs-software/chemistry-opencmis</url>
     </scm>
 
     <distributionManagement>
-        <site>
-            <id>${site.staging.id}</id>
-            <url>${site.staging.url}</url>
-        </site>
+        <repository>
+            <id>${env.DISTRIBUTION_ID}</id>
+            <url>${env.DISTRIBUTION_URL}</url>
+        </repository>
+        <snapshotRepository>
+            <id>${env.DISTRIBUTION_SNAPSHOT_ID}</id>
+            <url>${env.DISTRIBUTION_SNAPSHOT_URL}</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <issueManagement>
         <system>Jira</system>
-        <url>https://issues.apache.org/jira/browse/CMIS</url>
+        <url>https://kgs-software.atlassian.net/servicedesk/customer/portals</url>
     </issueManagement>
-
-    <mailingLists>
-        <mailingList>
-            <name>Chemistry Development List</name>
-            <subscribe>dev-subscribe@chemistry.apache.org</subscribe>
-            <unsubscribe>dev-unsubscribe@chemistry.apache.org</unsubscribe>
-            <post>dev@chemistry.apache.org</post>
-            <archive>
-                https://mail-archives.apache.org/mod_mbox/chemistry-dev/
-            </archive>
-        </mailingList>
-        <mailingList>
-            <name>Chemistry Source Control List</name>
-            <subscribe>commits-subscribe@chemistry.apache.org</subscribe>
-            <unsubscribe>commits-unsubscribe@chemistry.apache.org</unsubscribe>
-            <post>commits@chemistry.apache.org</post>
-            <archive>
-                https://mail-archives.apache.org/mod_mbox/chemistry-commits/
-            </archive>
-        </mailingList>
-    </mailingLists>
 
     <!-- Project Environment -->
     <modules>
@@ -125,26 +108,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compile.source>17</maven.compile.source>
         <maven.compile.target>17</maven.compile.target>
-        <docs.start.url>https://chemistry.apache.org/java/opencmis.html</docs.start.url>
-        <docs.download.directory>${project.build.directory}/downloaded-site</docs.download.directory>
-        <!--
-            | Here we configure Maven documentation site (incl. Javadocs) deployment
-            |
-            | By default site is deployed to:
-            | https://svn.apache.org/repos/asf/chemistry/site/trunk/content/java/${site.label}/maven/
-            | where site.label = project.version
-
-            | For details/changes see https://chemistry.apache.org/java/documentation-lifecycle.html
-            |
-            | Note: Site label (or any other property like site.staging.url) can be overriden on the command line to deploy to distinct location during site development
-            -->
         <site.label>${project.version}</site.label>
-        <site.staging.id>apache-site-staging</site.staging.id>
-        <!-- We're using wagon-svn to deploy directly to svn.apache.org to feed CMS with generated docs -->
-        <site.staging.protocol>svn:https</site.staging.protocol>
-        <site.staging.host>svn.apache.org</site.staging.host>
-        <site.staging.folder>/repos/asf/chemistry/site/trunk/content/java/${site.label}/maven</site.staging.folder>
-        <site.staging.url>${site.staging.protocol}://${site.staging.host}${site.staging.folder}</site.staging.url>
         <parentBasedir>${project.basedir}</parentBasedir>
 
         <woodstox.version>6.5.0</woodstox.version>
@@ -257,26 +221,6 @@
                     <timestampFormat>{0,date,yyyy-MM-dd'T'HH:mm:ssZ}</timestampFormat>
                 </configuration>
             </plugin>
-            <!-- Working, but not attached to the deployment.
-            Blocked on http://jira.codehaus.org/browse/MINSTALL-82
-            <plugin>
-                <groupId>net.ju-n.maven.plugins</groupId>
-                <artifactId>checksum-maven-plugin</artifactId>
-                <version>1.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>artifacts</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <algorithms>
-                        <algorithm>SHA-256</algorithm>
-                    </algorithms>
-                </configuration>
-            </plugin>
-             -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -294,24 +238,6 @@
                             <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
                         </manifestEntries>
                     </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <useReleaseProfile>false</useReleaseProfile>
-                    <!-- TODO: Add autogenerated JIRA release notes -->
-                    <preparationGoals>clean install</preparationGoals>
-                    <goals>deploy site</goals>
-                    <arguments>-Papache-release</arguments>
-                    <!-- Add this profile to also deploy the site upon release -->
-                    <!-- <arguments>-Papache-release,site-deploy</arguments> -->
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <username>${apache.username}</username>
-                    <password>${apache.password}</password>
-                    <!-- To lock files during release -->
-                    <useEditMode>true</useEditMode>
                 </configuration>
             </plugin>
             <plugin>
@@ -632,105 +558,4 @@
             </plugin>
         </plugins>
     </reporting>
-
-    <profiles>
-        <profile>
-            <id>coverage</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                        <version>${jacoco.version}</version>
-                        <executions>
-                            <execution>
-                                <id>default-prepare-agent</id>
-                                <goals>
-                                    <goal>prepare-agent</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>default-report</id>
-                                <goals>
-                                    <goal>report</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <!--
-            Extending the default -Papache-release profile used *only*
-            during releases
-        -->
-        <profile>
-            <id>apache-release</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <!--
-                        We want to package up licenses
-                        resources in the JARs produced
-                    -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-remote-resources-plugin</artifactId>
-                        <configuration>
-                            <appendedResourcesDirectory>${parentBasedir}/src/main/appended-resources</appendedResourcesDirectory>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <configuration>
-                            <webResources>
-                                <resource>
-                                    <!-- this is relative to the pom.xml directory -->
-                                    <directory>${project.build.directory}/maven-shared-archive-resources</directory>
-                                    <includes>
-                                        <include>META-INF/*</include>
-                                    </includes>
-                                </resource>
-                            </webResources>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>site-deploy</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-site-plugin</artifactId>
-                        <inherited>false</inherited>
-                        <executions>
-                            <execution>
-                                <id>site-deploy-toplevel</id>
-                                <goals>
-                                    <goal>deploy</goal>
-                                </goals>
-                                <phase>site</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>disable-java8-doclint</id>
-            <activation>
-                <jdk>[17,)</jdk>
-            </activation>
-            <properties>
-                <additionalparam>-Xdoclint:accessibility -Xdoclint:html -Xdoclint:reference -Xdoclint:syntax</additionalparam>
-            </properties>
-        </profile>
-    </profiles>
 </project>
