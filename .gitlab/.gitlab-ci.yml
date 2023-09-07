@@ -27,9 +27,8 @@ java dependencies:
       io.github.pmckeown:dependency-track-maven-plugin:1.6.0:metrics
       -Ddependency-track.dependencyTrackBaseUrl="$DEPENDENCYTRACK_URL"
       -Ddependency-track.apiKey="$DEPENDENCYTRACK_TOKEN"
-  only:
-    - dev-main
-    - main
+  rules:
+    - if $CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "dev-main"
     
 check unittests:
   stage: check
@@ -42,11 +41,10 @@ check unittests:
       - "*/*/target/surefire-reports/TEST-*.xml"
     reports:
       junit: "*/*/target/surefire-reports/TEST-*.xml"
-  only:
-    - main
-    - dev-main
-    - tags
-    - merge_requests
+  rules:
+    - if $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if $CI_COMMIT_TAG
+    - if $CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "dev-main"
 
 build:
   image: $BUILD_IMAGE
@@ -64,6 +62,30 @@ job deploy:
     DISTRIBUTION_SNAPSHOT_URL: $INTERNAL_MAVEN_SNAPSHOT_REPOSITORY
   script:
     - mvn deploy -DskipTests
-  only:
-    - tags
-    - main
+  rules:
+    - if $CI_COMMIT_TAG && $CI_COMMIT_BRANCH == "main"
+
+job deploy snapshot:
+  image: $BUILD_IMAGE
+  stage: deploy
+  variables:
+    DISTRIBUTION_ID: $MAVEN_DISTRIBUTION_ID
+    DISTRIBUTION_URL: $INTERNAL_MAVEN_REPOSITORY
+    DISTRIBUTION_SNAPSHOT_ID: $MAVEN_DISTRIBUTION_ID
+    DISTRIBUTION_SNAPSHOT_URL: $INTERNAL_MAVEN_SNAPSHOT_REPOSITORY
+  script:
+    - mvn deploy -DskipTests
+  rules:
+    - if $CI_COMMIT_TAG && $CI_COMMIT_BRANCH == "dev-main"
+
+job deploy maven central:
+  image: $BUILD_IMAGE
+  stage: deploy
+  variables:
+    DISTRIBUTION_ID: ossrh
+    DISTRIBUTION_URL: $MAVEN_CENTRAL_REPOSITORY_URL
+  rules:
+    - if $CI_COMMIT_TAG && $CI_COMMIT_BRANCH == "main"
+
+
+
