@@ -52,6 +52,12 @@ build:
   script: 
     - mvn $MAVEN_CLI_OPTS install -DskipTests
 
+print environment:
+  image: $BUILD_IMAGE
+  stage: check
+  script:
+    - env
+
 job deploy:
   image: $BUILD_IMAGE
   stage: deploy
