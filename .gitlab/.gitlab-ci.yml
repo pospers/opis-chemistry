@@ -103,7 +103,6 @@ deploy to kgs nexus:
     - VERSION=$(mvn help:evaluate -Dexpression=project.version)
     - echo "$VERSION" | grep SNAPSHOT || exit 1
     - echo $VERSION
-
     # decode base64 key - because we store the key in a way that doesn't preserve newlines
     - cat $PGP_RELEASE_SIGNING_KEY | base64 -d > releases@kgs-software.com.signing-subkey.asc
     # import key
