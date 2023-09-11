@@ -40,15 +40,12 @@ check qualitygate:
       paths:
         - .sonar/cache
   script:
-    - echo $SONARQUBE_TOKEN > token
-    - cat token
     - mvn $MAVEN_CLI_OPTS -Dsonar.login=$SONARQUBE_TOKEN compile sonar:sonar
   allow_failure: true
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
     - if: $CI_COMMIT_BRANCH =~ /^[dD][eE][vV]*/
     - if: $CI_COMMIT_BRANCH == 'main'
-
 
 check unittests:
   stage: check
