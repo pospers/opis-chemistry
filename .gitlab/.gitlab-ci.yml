@@ -74,9 +74,9 @@ deploy to  maven central:
   stage: deploy
   variables:
     DISTRIBUTION_ID: ossrh
-    DISTRIBUTION_URL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
+    DISTRIBUTION_URL: $MAVEN_CENTRAL_REPOSITORY_URL
     DISTRIBUTION_SNAPSHOT_ID: ossrh
-    DISTRIBUTION_SNAPSHOT_URL: https://s01.oss.sonatype.org/content/repositories/snapshots
+    DISTRIBUTION_SNAPSHOT_URL: $MAVEN_CENTRAL_SNAPSHOT_REPOSITORY_URL
   script:
     # decode base64 key - because we store the key in a way that doesn't preserve newlines
     - cat $PGP_RELEASE_SIGNING_KEY | base64 -d > releases@kgs-software.com.signing-subkey.asc
