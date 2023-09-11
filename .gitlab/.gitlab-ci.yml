@@ -78,8 +78,6 @@ deploy to  maven central:
     DISTRIBUTION_URL: $MAVEN_CENTRAL_REPOSITORY_URL
     DISTRIBUTION_SNAPSHOT_ID: ossrh
     DISTRIBUTION_SNAPSHOT_URL: $MAVEN_CENTRAL_SNAPSHOT_REPOSITORY_URL
-    OSSRH_USERNAME: $OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME
-    OSSRH_PASSWORD: $OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN
   script:
     # decode base64 key - because we store the key in a way that doesn't preserve newlines
     - cat $PGP_RELEASE_SIGNING_KEY | base64 -d > releases@kgs-software.com.signing-subkey.asc
@@ -89,7 +87,7 @@ deploy to  maven central:
     - gpg --list-keys
     - gpg --list-packets releases@kgs-software.com.signing-subkey.asc
     # package, sign, deploy
-    - mvn -Dgpg.passphrase="$PGP_RELEASE_SIGNING_KEY_PASSPHRASE" -Dgpg.keyname="$PGP_RELEASE_SIGNING_KEY_ID" package gpg:sign deploy  -DskipTests
+    - mvn -Dossrh.username=$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME -Dossrh.password=$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN -Dgpg.passphrase="$PGP_RELEASE_SIGNING_KEY_PASSPHRASE" -Dgpg.keyname="$PGP_RELEASE_SIGNING_KEY_ID" package gpg:sign deploy  -DskipTests
   rules:
     - if: $CI_COMMIT_TAG
 
