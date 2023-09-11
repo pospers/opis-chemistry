@@ -40,7 +40,8 @@ check qualitygate:
       paths:
         - .sonar/cache
   script:
-    - mvn $MAVEN_CLI_OPTS compile sonar:sonar
+    - echo $SONAR_TOKEN
+    - mvn $MAVEN_CLI_OPTS -Dsonar.token=$SONAR_TOKEN compile sonar:sonar
   allow_failure: true
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
