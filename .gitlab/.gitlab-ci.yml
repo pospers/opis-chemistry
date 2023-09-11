@@ -101,7 +101,7 @@ job deploy kgs nexus:
   script:
     # only deploy SNAPSHOTs to local repository
     - VERSION=$(mvn help:evaluate -Dexpression=project.version)
-    - [[ "$VERSION" == *"SNAPSHOT"* ]] && exit 1
+    - echo "$VERSION" | grep SNAPSHOT || exit 1
 
     # decode base64 key - because we store the key in a way that doesn't preserve newlines
     - cat $PGP_RELEASE_SIGNING_KEY | base64 -d > releases@kgs-software.com.signing-subkey.asc
