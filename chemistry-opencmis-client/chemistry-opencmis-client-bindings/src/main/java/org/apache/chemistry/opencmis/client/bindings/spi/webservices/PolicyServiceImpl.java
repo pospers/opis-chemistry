@@ -25,8 +25,6 @@ import static org.apache.chemistry.opencmis.commons.impl.WSConverter.setExtensio
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.ws.Holder;
-
 import org.apache.chemistry.opencmis.client.bindings.spi.BindingSession;
 import org.apache.chemistry.opencmis.commons.data.ExtensionsData;
 import org.apache.chemistry.opencmis.commons.data.ObjectData;
@@ -36,6 +34,8 @@ import org.apache.chemistry.opencmis.commons.impl.jaxb.CmisExtensionType;
 import org.apache.chemistry.opencmis.commons.impl.jaxb.CmisObjectType;
 import org.apache.chemistry.opencmis.commons.impl.jaxb.PolicyServicePort;
 import org.apache.chemistry.opencmis.commons.spi.PolicyService;
+
+import jakarta.xml.ws.Holder;
 
 /**
  * Policy Service Web Services client.

@@ -21,15 +21,15 @@ package org.apache.chemistry.opencmis.server.impl.browser.token;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.chemistry.opencmis.commons.exceptions.CmisPermissionDeniedException;
 import org.apache.chemistry.opencmis.commons.impl.Constants;
 import org.apache.chemistry.opencmis.commons.server.CallContext;
 import org.apache.chemistry.opencmis.server.shared.BasicAuthCallContextHandler;
 import org.apache.chemistry.opencmis.server.shared.HttpUtils;
+
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class TokenCallContextHandler extends BasicAuthCallContextHandler implements TokenHandler {
 

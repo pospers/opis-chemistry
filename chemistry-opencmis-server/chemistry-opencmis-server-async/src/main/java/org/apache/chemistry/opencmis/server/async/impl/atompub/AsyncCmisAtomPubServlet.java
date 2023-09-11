@@ -20,14 +20,14 @@ package org.apache.chemistry.opencmis.server.async.impl.atompub;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.chemistry.opencmis.server.async.impl.AsyncCmisServlet;
 import org.apache.chemistry.opencmis.server.async.impl.CmisAsyncHelper;
 import org.apache.chemistry.opencmis.server.impl.atompub.CmisAtomPubServlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Async CMIS AtomPub servlet.

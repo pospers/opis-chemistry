@@ -22,11 +22,6 @@ import static org.apache.chemistry.opencmis.commons.impl.WSConverter.convert;
 
 import java.math.BigInteger;
 
-import javax.annotation.Resource;
-import javax.jws.WebService;
-import javax.xml.ws.WebServiceContext;
-import javax.xml.ws.soap.MTOM;
-
 import org.apache.chemistry.opencmis.commons.data.ObjectList;
 import org.apache.chemistry.opencmis.commons.enums.CmisVersion;
 import org.apache.chemistry.opencmis.commons.enums.RelationshipDirection;
@@ -36,6 +31,11 @@ import org.apache.chemistry.opencmis.commons.impl.jaxb.CmisObjectListType;
 import org.apache.chemistry.opencmis.commons.impl.jaxb.EnumRelationshipDirection;
 import org.apache.chemistry.opencmis.commons.impl.jaxb.RelationshipServicePort;
 import org.apache.chemistry.opencmis.commons.server.CmisService;
+
+import jakarta.annotation.Resource;
+import jakarta.jws.WebService;
+import jakarta.xml.ws.WebServiceContext;
+import jakarta.xml.ws.soap.MTOM;
 
 /**
  * CMIS Relationship Service.

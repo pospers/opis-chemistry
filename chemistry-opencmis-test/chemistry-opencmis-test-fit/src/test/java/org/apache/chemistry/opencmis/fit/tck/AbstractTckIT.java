@@ -154,6 +154,7 @@ public abstract class AbstractTckIT extends AbstractRunner {
 
         tomcat.setBaseDir(tomcateBaseDir.getAbsolutePath());
         tomcat.setPort(getPort());
+        tomcat.getConnector();
         // tomcat.setSilent(true);
         tomcat.getHost().setCreateDirs(true);
         tomcat.getHost().setDeployOnStartup(true);
@@ -230,7 +231,8 @@ public abstract class AbstractTckIT extends AbstractRunner {
     }
 
     @Before
-    public void checkTest() {
+    public void checkTest() throws InterruptedException {
+    	Thread.sleep(8000);
         assumeTrue("Skipping all TCK tests.", getSystemPropertyBoolean(TEST));
 
         if (getCmisVersion() == CmisVersion.CMIS_1_0) {

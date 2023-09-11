@@ -18,8 +18,6 @@
  */
 package org.apache.chemistry.opencmis.client.bindings.spi.webservices;
 
-import javax.xml.ws.spi.Provider;
-
 import org.apache.chemistry.opencmis.client.bindings.spi.BindingSession;
 import org.apache.chemistry.opencmis.client.bindings.spi.CmisSpi;
 import org.apache.chemistry.opencmis.commons.SessionParameter;
@@ -36,6 +34,8 @@ import org.apache.chemistry.opencmis.commons.spi.RepositoryService;
 import org.apache.chemistry.opencmis.commons.spi.VersioningService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.xml.ws.spi.Provider;
 
 /**
  * CMIS Web Services SPI implementation.

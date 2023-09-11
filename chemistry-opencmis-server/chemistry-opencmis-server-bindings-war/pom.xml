@@ -13,7 +13,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.apache.chemistry.opencmis</groupId>
+        <groupId>com.kgs-software</groupId>
         <artifactId>chemistry-opencmis</artifactId>
         <version>1.2.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
@@ -25,6 +25,7 @@
 
     <properties>
         <parentBasedir>../../</parentBasedir>
+        <sonar.skip>true</sonar.skip>
     </properties>
 
     <dependencies>

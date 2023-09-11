@@ -20,12 +20,12 @@ package org.apache.chemistry.opencmis.server.async.impl;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.chemistry.opencmis.commons.impl.server.AbstractServiceFactory;
 import org.apache.chemistry.opencmis.server.async.AsyncCmisExecutor;
 import org.apache.chemistry.opencmis.server.async.AsyncCmisServiceFactory;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * An {@link AsyncCmisServiceFactory} implementation that sets up one simple

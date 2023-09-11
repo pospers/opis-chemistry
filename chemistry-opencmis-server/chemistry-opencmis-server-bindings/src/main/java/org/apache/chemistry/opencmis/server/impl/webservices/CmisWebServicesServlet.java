@@ -26,14 +26,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.Endpoint;
-import javax.xml.ws.soap.SOAPBinding;
-import javax.xml.ws.spi.Provider;
-
 import org.apache.chemistry.opencmis.commons.enums.CmisVersion;
 import org.apache.chemistry.opencmis.commons.exceptions.CmisRuntimeException;
 import org.apache.chemistry.opencmis.commons.impl.IOUtils;
@@ -50,6 +42,14 @@ import org.apache.cxf.BusFactory;
 import org.apache.cxf.transport.servlet.CXFNonSpringServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.xml.ws.Endpoint;
+import jakarta.xml.ws.soap.SOAPBinding;
+import jakarta.xml.ws.spi.Provider;
 
 /**
  * CMIS Web Services servlet.
@@ -293,7 +293,7 @@ public class CmisWebServicesServlet extends CXFNonSpringServlet {
         }
         bus.setProperty("bus.io.CachedOutputStream.MaxSize", "-1");
         if (factory.encryptTempFiles()) {
-            bus.setProperty("bus.io.CachedOutputStream.CipherTransformation", "AES/CTR/PKCS5Padding");
+            bus.setProperty("bus.io.CachedOutputStream.CipherTransformation", "AES/CTR/NoPadding");
         }
 
         configureInterceptors(bus);

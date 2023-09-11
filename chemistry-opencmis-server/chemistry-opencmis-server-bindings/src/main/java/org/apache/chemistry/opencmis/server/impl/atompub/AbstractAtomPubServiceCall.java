@@ -29,7 +29,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.xml.stream.XMLStreamException;
 
 import org.apache.chemistry.opencmis.commons.data.ObjectData;
@@ -49,6 +48,8 @@ import org.apache.chemistry.opencmis.commons.server.ObjectInfo;
 import org.apache.chemistry.opencmis.commons.server.RenditionInfo;
 import org.apache.chemistry.opencmis.server.shared.AbstractServiceCall;
 import org.apache.chemistry.opencmis.server.shared.Dispatcher;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 public abstract class AbstractAtomPubServiceCall extends AbstractServiceCall {
 

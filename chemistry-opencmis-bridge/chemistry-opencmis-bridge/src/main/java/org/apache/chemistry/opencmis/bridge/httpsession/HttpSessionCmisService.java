@@ -21,10 +21,10 @@ package org.apache.chemistry.opencmis.bridge.httpsession;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.chemistry.opencmis.bridge.CachedBindingCmisService;
 import org.apache.chemistry.opencmis.commons.spi.CmisBinding;
+
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Uses HTTP sessions to cache {@link CmisBinding} objects.
