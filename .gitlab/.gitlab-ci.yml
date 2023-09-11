@@ -17,8 +17,8 @@ check pipeline vars:
   stage: check
   image: $BUILD_IMAGE
   script:
-    - [ -z "$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME" ] && echo "OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME is empty"
-    - [ -z "$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN" ] && echo "OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN is empty"
+    - if [ -z "$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME" ]; then echo "OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME is empty"; fi
+    - if [ -z "$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN" ]; then echo "OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN is empty"; fi
 
 check dependencies:
   stage: check
