@@ -106,7 +106,7 @@
     </modules>
 
     <properties>
-	<global.version>1.2.1-SNAPSHOT</global.version>
+	<global.version>1.2.0</global.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compile.source>17</maven.compile.source>
         <maven.compile.target>17</maven.compile.target>
