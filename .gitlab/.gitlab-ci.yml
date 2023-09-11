@@ -13,7 +13,7 @@ stages:
   - build
   - deploy
 
-java dependencies:
+check dependencies:
   stage: check
   image: $BUILD_IMAGE
   script:
@@ -27,9 +27,27 @@ java dependencies:
       io.github.pmckeown:dependency-track-maven-plugin:1.6.0:metrics
       -Ddependency-track.dependencyTrackBaseUrl="$DEPENDENCYTRACK_URL"
       -Ddependency-track.apiKey="$DEPENDENCYTRACK_TOKEN"
+
+check qualitygate:
+  stage: check
+  image: $BUILD_IMAGE
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+  dependencies:
+    - check unittests
+  cache:
+    - key: "sonar-${CI_JOB_NAME}"
+      paths:
+        - .sonar/cache
+  script:
+    - mvn $MAVEN_CLI_OPTS compile sonar:sonar
+  allow_failure: true
   rules:
-    - if: $CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "dev-main"
-    
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_BRANCH =~ /^[dD][eE][vV]*/
+    - if: $CI_COMMIT_BRANCH == 'main'
+
+
 check unittests:
   stage: check
   image: $BUILD_IMAGE
@@ -52,49 +70,45 @@ build:
   script: 
     - mvn $MAVEN_CLI_OPTS install -DskipTests
 
-print environment:
-  image: $BUILD_IMAGE
-  stage: check
-  script:
-    - env
-
-job deploy:
-  image: $BUILD_IMAGE
-  stage: deploy
-  variables:
-    DISTRIBUTION_ID: $MAVEN_DISTRIBUTION_ID
-    DISTRIBUTION_URL: $INTERNAL_MAVEN_REPOSITORY
-    DISTRIBUTION_SNAPSHOT_ID: $MAVEN_DISTRIBUTION_ID
-    DISTRIBUTION_SNAPSHOT_URL: $INTERNAL_MAVEN_SNAPSHOT_REPOSITORY
-  script:
-    - mvn deploy -DskipTests
-  rules:
-    - if: $CI_COMMIT_TAG && $CI_COMMIT_BRANCH == "main"
-
-job deploy snapshot:
-  image: $BUILD_IMAGE
-  stage: deploy
-  variables:
-    DISTRIBUTION_ID: $MAVEN_DISTRIBUTION_ID
-    DISTRIBUTION_URL: $INTERNAL_MAVEN_REPOSITORY
-    DISTRIBUTION_SNAPSHOT_ID: $MAVEN_DISTRIBUTION_ID
-    DISTRIBUTION_SNAPSHOT_URL: $INTERNAL_MAVEN_SNAPSHOT_REPOSITORY
-  script:
-    - mvn deploy -DskipTests
-  rules:
-    - if: $CI_COMMIT_TAG && $CI_COMMIT_BRANCH == "dev-main"
-
 job deploy maven central:
   image: $BUILD_IMAGE
   stage: deploy
   variables:
     DISTRIBUTION_ID: ossrh
-    DISTRIBUTION_URL: $MAVEN_CENTRAL_REPOSITORY_URL
+    DISTRIBUTION_URL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
+    DISTRIBUTION_SNAPSHOT_ID: ossrh
+    DISTRIBUTION_SNAPSHOT_URL: https://s01.oss.sonatype.org/content/repositories/snapshots
   script:
-    - echo $PGP_RELEASE_SIGNING_KEY | base64 -d > releases@kgs-software.com.signing-subkey.asc
-    - gpg --import releases@kgs-software.com.signing-subkey.asc
+    # decode base64 key - because we store the key in a way that doesn't preserve newlines
+    - cat $PGP_RELEASE_SIGNING_KEY | base64 -d > releases@kgs-software.com.signing-subkey.asc
+    # import key
+    - echo $PGP_RELEASE_SIGNING_KEY_PASSPHRASE | gpg --passphrase-fd 0 --pinentry-mode=loopback --import releases@kgs-software.com.signing-subkey.asc
+    # print key info
+    - gpg --list-keys
+    - gpg --list-packets releases@kgs-software.com.signing-subkey.asc
+    # package, sign, deploy
+    - mvn -Dgpg.passphrase="$PGP_RELEASE_SIGNING_KEY_PASSPHRASE" -Dgpg.keyname="$PGP_RELEASE_SIGNING_KEY_ID" package gpg:sign deploy  -DskipTests
   rules:
-    - if: $CI_COMMIT_TAG && $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_TAG
 
-
+job deploy kgs nexus:
+  image: $BUILD_IMAGE
+  stage: deploy
+  variables:
+    DISTRIBUTION_ID: $MAVEN_DISTRIBUTION_ID
+    DISTRIBUTION_URL: $INTERNAL_MAVEN_REPOSITORY
+    DISTRIBUTION_SNAPSHOT_ID: $MAVEN_DISTRIBUTION_ID
+    DISTRIBUTION_SNAPSHOT_URL: $INTERNAL_MAVEN_SNAPSHOT_REPOSITORY
+  script:
+    # decode base64 key - because we store the key in a way that doesn't preserve newlines
+    - cat $PGP_RELEASE_SIGNING_KEY | base64 -d > releases@kgs-software.com.signing-subkey.asc
+    # import key
+    - echo $PGP_RELEASE_SIGNING_KEY_PASSPHRASE | gpg --passphrase-fd 0 --pinentry-mode=loopback --import releases@kgs-software.com.signing-subkey.asc
+    # print key info
+    - gpg --list-keys
+    - gpg --list-packets releases@kgs-software.com.signing-subkey.asc
+    # package, sign, deploy
+    - mvn -Dgpg.passphrase="$PGP_RELEASE_SIGNING_KEY_PASSPHRASE" -Dgpg.keyname="$PGP_RELEASE_SIGNING_KEY_ID" package gpg:sign deploy  -DskipTests
+  rules:
+    - if: $CI_COMMIT_BRANCH == "dev-main" || $CI_COMMIT_BRANCH =~ /^DEV*/
 
