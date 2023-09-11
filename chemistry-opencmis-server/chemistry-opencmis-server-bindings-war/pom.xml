@@ -25,6 +25,7 @@
 
     <properties>
         <parentBasedir>../../</parentBasedir>
+        <sonar.skip>true</sonar.skip>
     </properties>
 
     <dependencies>

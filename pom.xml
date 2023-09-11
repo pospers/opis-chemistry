@@ -17,14 +17,15 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>org.apache</groupId>
         <artifactId>apache</artifactId>
-        <version>21</version>
+        <version>29</version>
     </parent>
 
     <!-- Project Information -->
@@ -115,7 +116,7 @@
         <osgi.version>5.0.0</osgi.version>
         <felix.plugin.version>5.1.8</felix.plugin.version>
         <junit.version>4.13.2</junit.version>
-        <surefire.version>2.22.2</surefire.version>
+        <surefire.version>3.1.2</surefire.version>
         <failsafe.version>2.22.2</failsafe.version>
         <jacoco.version>0.8.8</jacoco.version>
         <slf4j.version>1.7.36</slf4j.version>
@@ -173,7 +174,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-remote-resources-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -187,7 +188,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>3.2.1</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
@@ -196,7 +197,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.4.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -204,7 +205,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>buildnumber-maven-plugin</artifactId>
-                <version>1.2</version>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <phase>validate</phase>
@@ -243,7 +244,7 @@
             <plugin>
                 <inherited>true</inherited>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.11.0</version>
                 <configuration>
                     <target>${maven.compile.target}</target>
                     <source>${maven.compile.source}</source>
@@ -276,7 +277,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-remote-resources-plugin</artifactId>
                 <configuration>
-                    <appendedResourcesDirectory>${parentBasedir}/src/main/appended-resources</appendedResourcesDirectory>
+                    <appendedResourcesDirectory>${parentBasedir}/src/main/appended-resources
+                    </appendedResourcesDirectory>
                 </configuration>
             </plugin>
             <plugin>
@@ -296,12 +298,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.7.1</version>
+                <version>3.9.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>3.1.0</version>
+                <configuration>
+                    <gpgArguments>
+                        <arg>--pinentry-mode</arg>
+                        <arg>loopback</arg>
+                    </gpgArguments>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -364,12 +372,12 @@
                         <license implementation="org.apache.rat.analysis.license.FullTextMatchingLicense">
                             <licenseFamilyCategory>OASIS</licenseFamilyCategory>
                             <licenseFamilyName>OASISOpen</licenseFamilyName>
-                            <notes />
+                            <notes/>
                             <fullText>.*OASIS Open.*</fullText>
                         </license>
                     </licenses>
                     <licenseFamilies>
-                        <licenseFamily implementation="org.apache.rat.license.Apache20LicenseFamily" />
+                        <licenseFamily implementation="org.apache.rat.license.Apache20LicenseFamily"/>
                         <licenseFamily implementation="org.apache.rat.license.SimpleLicenseFamily">
                             <familyName>OASISOpen</familyName>
                         </licenseFamily>
@@ -441,7 +449,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>${surefire.version}</version>
                 <configuration>
                     <aggregate>true</aggregate>
                     <reportsDirectories>
@@ -453,7 +461,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.3.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -488,15 +496,18 @@
                         ${basedir}/chemistry-opencmis-bridge/chemistry-opencmis-bridge/src/main/java:
                         ${basedir}/chemistry-opencmis-test/chemistry-opencmis-test-tck/src/main/java
                     </sourcepath>
- 
+
                     <groups>
                         <group>
                             <title>OpenCMIS Client API</title>
-                            <packages>org.apache.chemistry.opencmis.client:org.apache.chemistry.opencmis.client.api:org.apache.chemistry.opencmis.client.util</packages>
+                            <packages>
+                                org.apache.chemistry.opencmis.client:org.apache.chemistry.opencmis.client.api:org.apache.chemistry.opencmis.client.util
+                            </packages>
                         </group>
                         <group>
                             <title>OpenCMIS Commons API</title>
-                            <packages>org.apache.chemistry.opencmis.commons:org.apache.chemistry.opencmis.commons.*</packages>
+                            <packages>org.apache.chemistry.opencmis.commons:org.apache.chemistry.opencmis.commons.*
+                            </packages>
                         </group>
                         <group>
                             <title>OpenCMIS Bindings SPI</title>
@@ -504,7 +515,9 @@
                         </group>
                         <group>
                             <title>OpenCMIS Server</title>
-                            <packages>org.apache.chemistry.opencmis.commons.server:org.apache.chemistry.opencmis.commons.impl.server:org.apache.chemistry.opencmis.server.support:org.apache.chemistry.opencmis.server.support.wrapper:org.apache.chemistry.opencmis.server.support.query:org.apache.chemistry.opencmis.server.filter:org.apache.chemistry.opencmis.server.shared</packages>
+                            <packages>
+                                org.apache.chemistry.opencmis.commons.server:org.apache.chemistry.opencmis.commons.impl.server:org.apache.chemistry.opencmis.server.support:org.apache.chemistry.opencmis.server.support.wrapper:org.apache.chemistry.opencmis.server.support.query:org.apache.chemistry.opencmis.server.filter:org.apache.chemistry.opencmis.server.shared
+                            </packages>
                         </group>
                         <group>
                             <title>OpenCMIS Server (async)</title>
@@ -552,7 +565,8 @@
                     <source>17</source>
                     <doclint>accessibility,html,reference,syntax</doclint>
                     <additionalOptions>
-                    	<additionalOption>--add-stylesheet ${parentBasedir}/src/main/javadoc/chemistry-javadoc.css</additionalOption>
+                        <additionalOption>--add-stylesheet ${parentBasedir}/src/main/javadoc/chemistry-javadoc.css
+                        </additionalOption>
                     </additionalOptions>
                 </configuration>
             </plugin>
