@@ -33,7 +33,7 @@
     <groupId>com.kgs-software</groupId>
     <artifactId>chemistry-opencmis</artifactId>
     <name>Chemistry OpenCMIS</name>
-    <version>1.2.0</version>
+    <version>${global.version}</version>
     <packaging>pom</packaging>
 
     <organization>
@@ -106,6 +106,7 @@
     </modules>
 
     <properties>
+	<global.version>1.2.0</global.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compile.source>17</maven.compile.source>
         <maven.compile.target>17</maven.compile.target>
@@ -199,6 +200,12 @@
                     <artifactId>maven-enforcer-plugin</artifactId>
                     <version>3.4.0</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>1.5.0</version>
+                </plugin>
+
             </plugins>
         </pluginManagement>
         <plugins>
@@ -418,6 +425,30 @@
                     <source>17</source>
                     <doclint>accessibility,html,reference,syntax</doclint>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
         <extensions>
