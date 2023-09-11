@@ -6,3 +6,4 @@ target/
 *.iml
 *.swp
 **/.flattened-pom.xml
+**/*.swo
