@@ -19,6 +19,7 @@ check pipeline vars:
   script:
     - if [ -z "$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME" ]; then echo "OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME is empty"; fi
     - if [ -z "$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN" ]; then echo "OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN is empty"; fi
+    - cat ~/.m2/settings.xml
 
 check dependencies:
   stage: check
