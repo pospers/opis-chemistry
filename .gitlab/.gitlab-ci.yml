@@ -15,7 +15,7 @@ stages:
 
 check pipeline vars:
   stage: check
-  image: $INTERNAL_DOCKER_REGISTRY/maven/openjdk@sha256:7826e9c0f7565d6d2e868347ef4a10a771bdba2d38a274eeb995861217766e65
+  image: $BUILD_IMAGE
   script:
     - if [ -z "$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME" ]; then echo "OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME is empty"; fi
     - if [ -z "$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN" ]; then echo "OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN is empty"; fi
