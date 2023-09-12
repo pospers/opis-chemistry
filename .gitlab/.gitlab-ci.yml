@@ -23,9 +23,7 @@ check pipeline vars:
 
 check dependencies:
   stage: check
-  image:
-    name:  $BUILD_IMAGE
-    pull_policy: always
+  image: $BUILD_IMAGE
   script:
     - mvn $MAVEN_CLI_OPTS
       org.cyclonedx:cyclonedx-maven-plugin:2.7.9:makeAggregateBom
@@ -40,7 +38,7 @@ check dependencies:
 
 check qualitygate:
   stage: check
-  image: $BUILD_IMAGE
+  image: $INTERNAL_DOCKER_REGISTRY/maven/openjdk@sha256:7826e9c0f7565d6d2e868347ef4a10a771bdba2d38a274eeb99586121
   variables:
     SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
   dependencies:
