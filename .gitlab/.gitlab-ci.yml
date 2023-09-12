@@ -24,6 +24,7 @@ check pipeline vars:
 check dependencies:
   stage: check
   image: $BUILD_IMAGE
+  pull_policy: always
   script:
     - mvn $MAVEN_CLI_OPTS
       org.cyclonedx:cyclonedx-maven-plugin:2.7.9:makeAggregateBom
