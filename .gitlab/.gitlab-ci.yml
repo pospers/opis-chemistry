@@ -95,7 +95,7 @@ deploy to  maven central:
     - gpg --list-keys
     - gpg --list-packets releases@kgs-software.com.signing-subkey.asc
     # package, sign, deploy
-    - mvn -Dossrh.username=$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME -Dossrh.password=$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN -Dgpg.passphrase="$PGP_RELEASE_SIGNING_KEY_PASSPHRASE" -Dgpg.keyname="$PGP_RELEASE_SIGNING_KEY_ID" package gpg:sign deploy  -DskipTests
+    - mvn -P ossrh -Dossrh.username=$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME -Dossrh.password=$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN -Dgpg.passphrase="$PGP_RELEASE_SIGNING_KEY_PASSPHRASE" -Dgpg.keyname="$PGP_RELEASE_SIGNING_KEY_ID" package gpg:sign deploy  -DskipTests
   rules:
     - if: $CI_COMMIT_TAG
 
