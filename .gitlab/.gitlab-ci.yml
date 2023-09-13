@@ -108,7 +108,7 @@ deploy to kgs nexus:
     DISTRIBUTION_SNAPSHOT_ID: $MAVEN_DISTRIBUTION_ID
     DISTRIBUTION_SNAPSHOT_URL: $INTERNAL_MAVEN_SNAPSHOT_REPOSITORY
   script:
-    # Only deploy SNAPSHOTs to local repository to avoid confusion. The single source of truth for the release files is the maven central.
+    # Only deploy snapshots to local repository to avoid confusion. The single source of truth for the release files is the maven central.
     - |
       if mvn help:evaluate -Dexpression=project.version | grep SNAPSHOT; then
         mvn package deploy  -DskipTests
