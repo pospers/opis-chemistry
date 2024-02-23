@@ -13,6 +13,14 @@ stages:
   - build
   - deploy
 
+check pipeline vars:
+  stage: check
+  image: $BUILD_IMAGE
+  script:
+    - if [ -z "$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME" ]; then echo "OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN_NAME is empty"; fi
+    - if [ -z "$OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN" ]; then echo "OSSRH_MAVEN_CENTRAL_REPOSITORY_TOKEN is empty"; fi
+    - cat ~/.m2/settings.xml
+
 check dependencies:
   stage: check
   image: $BUILD_IMAGE
@@ -102,18 +110,10 @@ deploy to kgs nexus:
     DISTRIBUTION_SNAPSHOT_ID: $MAVEN_DISTRIBUTION_ID
     DISTRIBUTION_SNAPSHOT_URL: $INTERNAL_MAVEN_SNAPSHOT_REPOSITORY
   script:
-    # only deploy SNAPSHOTs to local repository
+    # Only deploy snapshots to local repository to avoid confusion. The single source of truth for the release files is the maven central.
     - |
       if mvn help:evaluate -Dexpression=project.version | grep SNAPSHOT; then
-        # decode base64 key - because we store the key in a way that doesn't preserve newlines
-        cat $PGP_RELEASE_SIGNING_KEY | base64 -d > releases@kgs-software.com.signing-subkey.asc
-        # import key
-        echo $PGP_RELEASE_SIGNING_KEY_PASSPHRASE | gpg --passphrase-fd 0 --pinentry-mode=loopback --import releases@kgs-software.com.signing-subkey.asc
-        # print key info
-        gpg --list-keys
-        gpg --list-packets releases@kgs-software.com.signing-subkey.asc
-        # package, sign, deploy
-        mvn -Dgpg.passphrase="$PGP_RELEASE_SIGNING_KEY_PASSPHRASE" -Dgpg.keyname="$PGP_RELEASE_SIGNING_KEY_ID" package gpg:sign deploy  -DskipTests
+        mvn package deploy  -DskipTests
       fi
   rules:
     - if: $CI_COMMIT_BRANCH == "dev-main" || $CI_COMMIT_BRANCH =~ /^DEV*/
