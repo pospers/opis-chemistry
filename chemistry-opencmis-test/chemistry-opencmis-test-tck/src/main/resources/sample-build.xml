@@ -21,7 +21,7 @@
             </fileset>
         </path>
     
-        <taskdef name="cmistck" classname="org.apache.chemistry.opencmis.tck.runner.CmisTckAntTask">
+        <taskdef name="cmistck" classname="gov.opm.opis.chemistry.opencmis.tck.runner.CmisTckAntTask">
             <classpath refid="opencmistck"/>
         </taskdef>
         

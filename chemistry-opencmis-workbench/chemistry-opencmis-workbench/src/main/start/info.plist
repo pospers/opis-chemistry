@@ -5,7 +5,7 @@
     <key>CFBundleName</key>
     <string>CMIS Workbench @versionnumber@</string>
     <key>CFBundleIdentifier</key>
-    <string>org.apache.chemistry.opencmis.workbench</string>
+    <string>gov.opm.opis.chemistry.opencmis.workbench</string>
     <key>CFBundleExecutable</key>
     <string>run.sh</string>
     <key>CFBundleIconFile</key>

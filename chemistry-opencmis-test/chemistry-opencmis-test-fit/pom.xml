@@ -23,7 +23,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.kgs-software</groupId>
+        <groupId>gov.opm</groupId>
         <artifactId>chemistry-opencmis</artifactId>
         <version>${global.version}</version>
         <relativePath>../../pom.xml</relativePath>
@@ -100,31 +100,31 @@
                     </argLine>
                     <systemPropertyVariables>
                         <systemProperty>
-                            <name>org.apache.chemistry.opencmis.session.repository.id</name>
+                            <name>gov.opm.opis.chemistry.opencmis.session.repository.id</name>
                             <value>${repository}</value>
                         </systemProperty>
                         <systemProperty>
-                            <name>org.apache.chemistry.opencmis.user</name>
+                            <name>gov.opm.opis.chemistry.opencmis.user</name>
                             <value>${user}</value>
                         </systemProperty>
                         <systemProperty>
-                            <name>org.apache.chemistry.opencmis.password</name>
+                            <name>gov.opm.opis.chemistry.opencmis.password</name>
                             <value>${password}</value>
                         </systemProperty>
                         <systemProperty>
-                            <name>org.apache.chemistry.opencmis.tck.default.documentType</name>
+                            <name>gov.opm.opis.chemistry.opencmis.tck.default.documentType</name>
                             <value>${default.documentType}</value>
                         </systemProperty>
                         <systemProperty>
-                            <name>org.apache.chemistry.opencmis.tck.default.versionableDocumentType</name>
+                            <name>gov.opm.opis.chemistry.opencmis.tck.default.versionableDocumentType</name>
                             <value>${default.versionableDocumentType}</value>
                         </systemProperty>
                         <systemProperty>
-                            <name>org.apache.chemistry.opencmis.tck.testNotVersionable</name>
+                            <name>gov.opm.opis.chemistry.opencmis.tck.testNotVersionable</name>
                             <value>${test.notVersionable}</value>
                         </systemProperty>
                         <systemProperty>
-                            <name>org.apache.chemistry.opencmis.tck.testVersionable</name>
+                            <name>gov.opm.opis.chemistry.opencmis.tck.testVersionable</name>
                             <value>${test.versionable}</value>
                         </systemProperty>
                         <systemProperty>
@@ -191,7 +191,7 @@
             <properties>
                 <overlay.groupId>${project.groupId}</overlay.groupId>
                 <overlay.artifactId>chemistry-opencmis-server-inmemory</overlay.artifactId>
-                <factory.class>org.apache.chemistry.opencmis.inmemory.server.InMemoryServiceFactoryImpl</factory.class>
+                <factory.class>gov.opm.opis.chemistry.opencmis.inmemory.server.InMemoryServiceFactoryImpl</factory.class>
                 <!-- Used in ServiceLoader to look up impl. -->
                 <service.factory.class>${factory.class}</service.factory.class>
                 <repository>test</repository>

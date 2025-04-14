@@ -24,7 +24,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.kgs-software</groupId>
+        <groupId>gov.opm</groupId>
         <artifactId>chemistry-opencmis</artifactId>
         <version>${global.version}</version>
         <relativePath>../../pom.xml</relativePath>
@@ -65,7 +65,7 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                          org.apache.chemistry.opencmis.commons.*;version=${project.version}
+                          gov.opm.opis.chemistry.opencmis.commons.*;version=${project.version}
                         </Export-Package>
                         <Bundle-DocURL>${project.url}</Bundle-DocURL>
                     </instructions>

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="org.apache.chemistry.opencmis.fileshare.*" %>
-<%@ page import="org.apache.chemistry.opencmis.commons.definitions.*" %>
+<%@ page import="gov.opm.opis.chemistry.opencmis.fileshare.*" %>
+<%@ page import="gov.opm.opis.chemistry.opencmis.commons.definitions.*" %>
 <%
-   FileShareCmisServiceFactory factory = (FileShareCmisServiceFactory) application.getAttribute("org.apache.chemistry.opencmis.servicesfactory");
+   FileShareCmisServiceFactory factory = (FileShareCmisServiceFactory) application.getAttribute("gov.opm.opis.chemistry.opencmis.servicesfactory");
 %>
 <!-- 
 /*

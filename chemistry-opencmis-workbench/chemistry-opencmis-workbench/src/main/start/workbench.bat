@@ -25,11 +25,11 @@ rem set https_proxy=https://<proxy>:<port>
 rem set no_proxy=localhost,127.0.0.0,.local
 
 
-set JAVADETECTOR_CMD=java -classpath ".;%~dp0\lib\*" org.apache.chemistry.opencmis.workbench.JavaDetector
+set JAVADETECTOR_CMD=java -classpath ".;%~dp0\lib\*" gov.opm.opis.chemistry.opencmis.workbench.JavaDetector
 for /F "delims=/" %%x in ('%JAVADETECTOR_CMD%') do set "JAVA_VERSION_OPTS=%%x"
-set PROXY_CMD=java -classpath ".;%~dp0\lib\*" org.apache.chemistry.opencmis.workbench.ProxyDetector -j -s
+set PROXY_CMD=java -classpath ".;%~dp0\lib\*" gov.opm.opis.chemistry.opencmis.workbench.ProxyDetector -j -s
 for /F "delims=/" %%x in ('%PROXY_CMD%') do set "JAVA_PROXY_CONF=%%x"
 
 set JAVA_OPTS=%JAVA_VERSION_OPTS% %JAVA_PROXY_CONF%
 
-start /B javaw %JAVA_OPTS% %CUSTOM_JAVA_OPTS% -classpath ".;%~dp0\lib\*" org.apache.chemistry.opencmis.workbench.Workbench
+start /B javaw %JAVA_OPTS% %CUSTOM_JAVA_OPTS% -classpath ".;%~dp0\lib\*" gov.opm.opis.chemistry.opencmis.workbench.Workbench

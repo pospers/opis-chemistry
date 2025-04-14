@@ -6,10 +6,10 @@ package ${package};
 import java.math.BigInteger;
 import java.util.Map;
 
-import org.apache.chemistry.opencmis.commons.impl.server.AbstractServiceFactory;
-import org.apache.chemistry.opencmis.commons.server.CallContext;
-import org.apache.chemistry.opencmis.commons.server.CmisService;
-import org.apache.chemistry.opencmis.server.support.wrapper.ConformanceCmisServiceWrapper;
+import gov.opm.opis.chemistry.opencmis.commons.impl.server.AbstractServiceFactory;
+import gov.opm.opis.chemistry.opencmis.commons.server.CallContext;
+import gov.opm.opis.chemistry.opencmis.commons.server.CmisService;
+import gov.opm.opis.chemistry.opencmis.server.support.wrapper.ConformanceCmisServiceWrapper;
 
 /**
  * CMIS Service Factory.

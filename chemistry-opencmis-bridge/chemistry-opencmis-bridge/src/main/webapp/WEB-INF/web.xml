@@ -24,7 +24,7 @@
 	<display-name>OpenCMIS Bridge</display-name>
 
 	<listener>
-		<listener-class>org.apache.chemistry.opencmis.server.impl.CmisRepositoryContextListener</listener-class>
+		<listener-class>gov.opm.opis.chemistry.opencmis.server.impl.CmisRepositoryContextListener</listener-class>
 	</listener>
 	
 	<listener>
@@ -33,26 +33,26 @@
 	
 	<servlet>
 		<servlet-name>cmisws</servlet-name>
-		<servlet-class>org.apache.chemistry.opencmis.server.impl.webservices.CmisWebServicesServlet</servlet-class>
+		<servlet-class>gov.opm.opis.chemistry.opencmis.server.impl.webservices.CmisWebServicesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet>
 		<servlet-name>cmisatom</servlet-name>
-		<servlet-class>org.apache.chemistry.opencmis.server.impl.atompub.CmisAtomPubServlet</servlet-class>
+		<servlet-class>gov.opm.opis.chemistry.opencmis.server.impl.atompub.CmisAtomPubServlet</servlet-class>
 		<init-param>
 			<param-name>callContextHandler</param-name>
-			<param-value>org.apache.chemistry.opencmis.server.shared.BasicAuthCallContextHandler</param-value>
+			<param-value>gov.opm.opis.chemistry.opencmis.server.shared.BasicAuthCallContextHandler</param-value>
 		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 	
 	<servlet>
 		<servlet-name>cmisbrowser</servlet-name>
-		<servlet-class>org.apache.chemistry.opencmis.server.impl.browser.CmisBrowserBindingServlet</servlet-class>
+		<servlet-class>gov.opm.opis.chemistry.opencmis.server.impl.browser.CmisBrowserBindingServlet</servlet-class>
 		<init-param>
 			<param-name>callContextHandler</param-name>
-			<param-value>org.apache.chemistry.opencmis.server.shared.BasicAuthCallContextHandler</param-value>
+			<param-value>gov.opm.opis.chemistry.opencmis.server.shared.BasicAuthCallContextHandler</param-value>
 		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>

@@ -23,7 +23,7 @@
 gunit CMISQL;
 
 @header{
-package org.apache.chemistry.opencmis.server.support.query;
+package gov.opm.opis.chemistry.opencmis.server.support.query;
 }
 
 // ----- Lexer tests -----

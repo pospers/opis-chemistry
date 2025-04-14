@@ -68,7 +68,7 @@
 
 		function login(e, loginKey) {
 			$.ajax({
-				url : '<%= request.getAttribute("org.apache.chemistry.opencmis.loginUrl") %>login',
+				url : '<%= request.getAttribute("gov.opm.opis.chemistry.opencmis.loginUrl") %>login',
 				type : 'POST',
 				data : {
 					url : appDomain + appPath,
@@ -90,7 +90,7 @@
 
 		function logout(e, appKey) {
 			$.ajax({
-				url : '<%= request.getAttribute("org.apache.chemistry.opencmis.loginUrl") %>logout',
+				url : '<%= request.getAttribute("gov.opm.opis.chemistry.opencmis.loginUrl") %>logout',
 				type : 'POST',
 				data : {
 					key : appKey
@@ -113,7 +113,7 @@
 		//////////////////////////////////////////////////////////
 		function requestTokens(e, appKey) {
 			$.ajax({
-				url : '<%= request.getAttribute("org.apache.chemistry.opencmis.loginUrl") %>token',
+				url : '<%= request.getAttribute("gov.opm.opis.chemistry.opencmis.loginUrl") %>token',
 				type : 'POST',
 				data : {
 					key : appKey

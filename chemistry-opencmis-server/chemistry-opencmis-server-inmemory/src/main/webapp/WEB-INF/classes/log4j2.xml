@@ -27,7 +27,7 @@
 		<Root level="warn">
 			<AppenderRef ref="STDOUT" />
 		</Root>
-		<Logger name="org.apache.chemistry.opencmis.inmemory" level="info"/> 
-		<Logger name="org.apache.chemistry.opencmis.server.support.filter" level="info"/>
+		<Logger name="gov.opm.opis.chemistry.opencmis.inmemory" level="info"/> 
+		<Logger name="gov.opm.opis.chemistry.opencmis.server.support.filter" level="info"/>
 	</Loggers>
 </Configuration>

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import org.apache.chemistry.opencmis.commons.data.*
-import org.apache.chemistry.opencmis.client.api.*
+import gov.opm.opis.chemistry.opencmis.commons.data.*
+import gov.opm.opis.chemistry.opencmis.client.api.*
 
 Document doc = session.getObject("...");
 

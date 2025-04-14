@@ -3,8 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package};
 
-import org.apache.chemistry.opencmis.commons.server.CmisService;
-import org.apache.chemistry.opencmis.server.support.wrapper.AbstractCmisServiceWrapper;
+import gov.opm.opis.chemistry.opencmis.commons.server.CmisService;
+import gov.opm.opis.chemistry.opencmis.server.support.wrapper.AbstractCmisServiceWrapper;
 
 /**
  * CMIS Service Wrapper.

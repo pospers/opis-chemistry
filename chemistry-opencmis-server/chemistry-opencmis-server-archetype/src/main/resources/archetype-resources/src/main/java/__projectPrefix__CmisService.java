@@ -7,25 +7,25 @@ import java.math.BigInteger;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.chemistry.opencmis.commons.data.ExtensionsData;
-import org.apache.chemistry.opencmis.commons.data.ObjectData;
-import org.apache.chemistry.opencmis.commons.data.ObjectInFolderList;
-import org.apache.chemistry.opencmis.commons.data.ObjectParentData;
-import org.apache.chemistry.opencmis.commons.data.RepositoryInfo;
-import org.apache.chemistry.opencmis.commons.definitions.TypeDefinition;
-import org.apache.chemistry.opencmis.commons.definitions.TypeDefinitionList;
-import org.apache.chemistry.opencmis.commons.enums.CapabilityAcl;
-import org.apache.chemistry.opencmis.commons.enums.CapabilityChanges;
-import org.apache.chemistry.opencmis.commons.enums.CapabilityContentStreamUpdates;
-import org.apache.chemistry.opencmis.commons.enums.CapabilityJoin;
-import org.apache.chemistry.opencmis.commons.enums.CapabilityQuery;
-import org.apache.chemistry.opencmis.commons.enums.CapabilityRenditions;
-import org.apache.chemistry.opencmis.commons.enums.IncludeRelationships;
-import org.apache.chemistry.opencmis.commons.impl.dataobjects.RepositoryCapabilitiesImpl;
-import org.apache.chemistry.opencmis.commons.impl.dataobjects.RepositoryInfoImpl;
-import org.apache.chemistry.opencmis.commons.impl.server.AbstractCmisService;
-import org.apache.chemistry.opencmis.commons.server.CallContext;
-import org.apache.chemistry.opencmis.server.support.wrapper.CallContextAwareCmisService;
+import gov.opm.opis.chemistry.opencmis.commons.data.ExtensionsData;
+import gov.opm.opis.chemistry.opencmis.commons.data.ObjectData;
+import gov.opm.opis.chemistry.opencmis.commons.data.ObjectInFolderList;
+import gov.opm.opis.chemistry.opencmis.commons.data.ObjectParentData;
+import gov.opm.opis.chemistry.opencmis.commons.data.RepositoryInfo;
+import gov.opm.opis.chemistry.opencmis.commons.definitions.TypeDefinition;
+import gov.opm.opis.chemistry.opencmis.commons.definitions.TypeDefinitionList;
+import gov.opm.opis.chemistry.opencmis.commons.enums.CapabilityAcl;
+import gov.opm.opis.chemistry.opencmis.commons.enums.CapabilityChanges;
+import gov.opm.opis.chemistry.opencmis.commons.enums.CapabilityContentStreamUpdates;
+import gov.opm.opis.chemistry.opencmis.commons.enums.CapabilityJoin;
+import gov.opm.opis.chemistry.opencmis.commons.enums.CapabilityQuery;
+import gov.opm.opis.chemistry.opencmis.commons.enums.CapabilityRenditions;
+import gov.opm.opis.chemistry.opencmis.commons.enums.IncludeRelationships;
+import gov.opm.opis.chemistry.opencmis.commons.impl.dataobjects.RepositoryCapabilitiesImpl;
+import gov.opm.opis.chemistry.opencmis.commons.impl.dataobjects.RepositoryInfoImpl;
+import gov.opm.opis.chemistry.opencmis.commons.impl.server.AbstractCmisService;
+import gov.opm.opis.chemistry.opencmis.commons.server.CallContext;
+import gov.opm.opis.chemistry.opencmis.server.support.wrapper.CallContextAwareCmisService;
 
 /**
  * CMIS Service Implementation.

@@ -38,8 +38,8 @@ body {
 	<div>
 	<p>Please provide your credentials for this CMIS repository.</p>
 	<p>
-		<% if (request.getAttribute("org.apache.chemistry.opencmis.error") != null) { %>
-		<span style="color: red"><%= request.getAttribute("org.apache.chemistry.opencmis.error") %></span>
+		<% if (request.getAttribute("gov.opm.opis.chemistry.opencmis.error") != null) { %>
+		<span style="color: red"><%= request.getAttribute("gov.opm.opis.chemistry.opencmis.error") %></span>
 		<% } %>
 	</p>
 	</div>
@@ -59,7 +59,7 @@ body {
 				<td></td>
 				<td><input type="checkbox" name="trustapp" value="1">
 				    I'm trusting this application:<br>
-				    <span style="font-weight: bold"><%= request.getAttribute("org.apache.chemistry.opencmis.appurl") %></span>
+				    <span style="font-weight: bold"><%= request.getAttribute("gov.opm.opis.chemistry.opencmis.appurl") %></span>
 				</td>
 			</tr>
 			<tr>
@@ -68,7 +68,7 @@ body {
 			</tr>
 
 		</table>
-		<input type="hidden" name="key" value="<%= request.getAttribute("org.apache.chemistry.opencmis.formkey") %>">
+		<input type="hidden" name="key" value="<%= request.getAttribute("gov.opm.opis.chemistry.opencmis.formkey") %>">
 	</form>
 	</div>
 	

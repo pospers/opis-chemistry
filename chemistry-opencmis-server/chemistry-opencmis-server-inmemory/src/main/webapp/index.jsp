@@ -23,20 +23,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ page import="java.util.Date, java.text.SimpleDateFormat, java.util.Locale, java.util.Calendar" %>
-<%@ page import="org.apache.chemistry.opencmis.inmemory.storedobj.api.StoreManager" %>
-<%@ page import="org.apache.chemistry.opencmis.commons.server.CallContext" %>
-<%@ page import="org.apache.chemistry.opencmis.inmemory.DummyCallContext" %>
-<%@ page import="org.apache.chemistry.opencmis.commons.server.CmisServiceFactory" %>
-<%@ page import="org.apache.chemistry.opencmis.commons.server.CmisService" %>
-<%@ page import="org.apache.chemistry.opencmis.inmemory.server.InMemoryService" %>
-<%@ page import="org.apache.chemistry.opencmis.inmemory.ConfigConstants" %>
-<%@ page import="org.apache.chemistry.opencmis.inmemory.ConfigurationSettings" %>
+<%@ page import="gov.opm.opis.chemistry.opencmis.inmemory.storedobj.api.StoreManager" %>
+<%@ page import="gov.opm.opis.chemistry.opencmis.commons.server.CallContext" %>
+<%@ page import="gov.opm.opis.chemistry.opencmis.inmemory.DummyCallContext" %>
+<%@ page import="gov.opm.opis.chemistry.opencmis.commons.server.CmisServiceFactory" %>
+<%@ page import="gov.opm.opis.chemistry.opencmis.commons.server.CmisService" %>
+<%@ page import="gov.opm.opis.chemistry.opencmis.inmemory.server.InMemoryService" %>
+<%@ page import="gov.opm.opis.chemistry.opencmis.inmemory.ConfigConstants" %>
+<%@ page import="gov.opm.opis.chemistry.opencmis.inmemory.ConfigurationSettings" %>
 
 <%!
     private static final String OPENCMIS_VERSION;
 
     static {
-        Package p = Package.getPackage("org.apache.chemistry.opencmis.inmemory");
+        Package p = Package.getPackage("gov.opm.opis.chemistry.opencmis.inmemory");
         if (p == null) {
             OPENCMIS_VERSION = "(unofficial dev or snapshot build)";
         } else {
@@ -55,7 +55,7 @@
 	private StoreManager getStoreManager(HttpServletRequest request) {
 	    CallContext context = new DummyCallContext();
 	    CmisServiceFactory servicesFactory = (CmisServiceFactory) request.getSession().getServletContext().getAttribute(
-	        "org.apache.chemistry.opencmis.servicesfactory");
+	        "gov.opm.opis.chemistry.opencmis.servicesfactory");
 	    // AbstractServiceFactory factory = (AbstractServiceFactory)
 	    CmisService service = servicesFactory.getService(context);
 	    if (!(service instanceof InMemoryService))

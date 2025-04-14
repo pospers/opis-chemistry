@@ -19,9 +19,9 @@
  */
 
 function OpenCMISConnector()  {
-	this.repositoryDomain  = '<%= request.getAttribute("org.apache.chemistry.opencmis.domain") %>';
-	this.serviceUrl        = '<%= request.getAttribute("org.apache.chemistry.opencmis.serviceUrl") %>';
-	this.iframeUrl         = '<%= request.getAttribute("org.apache.chemistry.opencmis.iframeUrl") %>';
+	this.repositoryDomain  = '<%= request.getAttribute("gov.opm.opis.chemistry.opencmis.domain") %>';
+	this.serviceUrl        = '<%= request.getAttribute("gov.opm.opis.chemistry.opencmis.serviceUrl") %>';
+	this.iframeUrl         = '<%= request.getAttribute("gov.opm.opis.chemistry.opencmis.iframeUrl") %>';
 	this.applicationDomain = '';
 	this.iframe   = null;
 	this.init     = false;

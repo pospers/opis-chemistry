@@ -24,7 +24,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.kgs-software</groupId>
+        <groupId>gov.opm</groupId>
         <artifactId>chemistry-opencmis</artifactId>
         <version>${global.version}</version>
         <relativePath>../../pom.xml</relativePath>
@@ -130,7 +130,7 @@
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                         <manifest>
-                            <mainClass>org.apache.chemistry.opencmis.workbench.Workbench</mainClass>
+                            <mainClass>gov.opm.opis.chemistry.opencmis.workbench.Workbench</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix />
                         </manifest>

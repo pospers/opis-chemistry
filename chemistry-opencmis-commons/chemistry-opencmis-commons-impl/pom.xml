@@ -24,7 +24,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.kgs-software</groupId>
+        <groupId>gov.opm</groupId>
         <artifactId>chemistry-opencmis</artifactId>
         <version>${global.version}</version>
         <relativePath>../../pom.xml</relativePath>
@@ -134,7 +134,7 @@
                                     <extraargs>
                                         <extraarg>-verbose</extraarg>
                                         <extraarg>-p</extraarg>
-                                        <extraarg>org.apache.chemistry.opencmis.commons.impl.jaxb</extraarg>
+                                        <extraarg>gov.opm.opis.chemistry.opencmis.commons.impl.jaxb</extraarg>
                                     </extraargs>
                                 </wsdlOption>
                             </wsdlOptions>
@@ -167,10 +167,10 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                          org.apache.chemistry.opencmis.commons.impl.*;version=${project.version}
+                          gov.opm.opis.chemistry.opencmis.commons.impl.*;version=${project.version}
                         </Export-Package>
                         <Import-Package>
-                          org.apache.chemistry.opencmis.commons.*,
+                          gov.opm.opis.chemistry.opencmis.commons.*,
                           *
                         </Import-Package>
                         <Bundle-DocURL>${project.url}</Bundle-DocURL>

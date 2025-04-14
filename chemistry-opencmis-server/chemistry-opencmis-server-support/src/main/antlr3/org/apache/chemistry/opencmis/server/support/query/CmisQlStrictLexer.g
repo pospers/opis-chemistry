@@ -53,7 +53,7 @@ import CmisBaseLexer;
  * THIS FILE IS AUTO-GENERATED, DO NOT EDIT.
  */
 
-package org.apache.chemistry.opencmis.server.support.query;
+package gov.opm.opis.chemistry.opencmis.server.support.query;
 }
 
 @members {

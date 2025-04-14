@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import org.apache.chemistry.opencmis.client.api.*
+import gov.opm.opis.chemistry.opencmis.client.api.*
 
 session.rootFolder.getDescendants(-1).each { printTree(it, 0) }
 

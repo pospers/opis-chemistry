@@ -17,7 +17,7 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<Configuration status="INFO" packages="org.apache.chemistry.opencmis.workbench">
+<Configuration status="INFO" packages="gov.opm.opis.chemistry.opencmis.workbench">
 	<Appenders>
 		<ClientWriterAppender name="logframe">
 			<PatternLayout pattern="> %d{HH:mm:ss} %5.5p %40.40c: %m%n%throwable{50}" />

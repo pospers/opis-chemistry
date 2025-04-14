@@ -24,7 +24,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.kgs-software</groupId>
+        <groupId>gov.opm</groupId>
         <artifactId>chemistry-opencmis</artifactId>
         <version>${global.version}</version>
         <relativePath>../../pom.xml</relativePath>
@@ -72,11 +72,11 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            org.apache.chemistry.opencmis.client.bindings;version=${project.version},
-                            org.apache.chemistry.opencmis.client.bindings.spi.*;version=${project.version},
-                            org.apache.chemistry.opencmis.client.bindings.cache.*;version=${project.version},
-                            !org.apache.chemistry.opencmis.commons.impl.json.*,
-                            !org.apache.chemistry.opencmis.commons.impl.jaxb.*,
+                            gov.opm.opis.chemistry.opencmis.client.bindings;version=${project.version},
+                            gov.opm.opis.chemistry.opencmis.client.bindings.spi.*;version=${project.version},
+                            gov.opm.opis.chemistry.opencmis.client.bindings.cache.*;version=${project.version},
+                            !gov.opm.opis.chemistry.opencmis.commons.impl.json.*,
+                            !gov.opm.opis.chemistry.opencmis.commons.impl.jaxb.*,
                             !org.apache.http.*,
                             !org.apache.cxf.*,
                             !okhttp3.*,

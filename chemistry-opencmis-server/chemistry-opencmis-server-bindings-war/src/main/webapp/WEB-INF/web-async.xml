@@ -29,7 +29,7 @@
     </welcome-file-list>
 
     <listener>
-        <listener-class>org.apache.chemistry.opencmis.server.impl.CmisRepositoryContextListener</listener-class>
+        <listener-class>gov.opm.opis.chemistry.opencmis.server.impl.CmisRepositoryContextListener</listener-class>
     </listener>
 
     <!-- 
@@ -72,7 +72,7 @@
     <!-- - ->
     <filter>
         <filter-name>LoggingFilter</filter-name>
-        <filter-class>org.apache.chemistry.opencmis.server.support.filter.LoggingFilter</filter-class>
+        <filter-class>gov.opm.opis.chemistry.opencmis.server.support.filter.LoggingFilter</filter-class>
         <init-param>
             <param-name>LogDir</param-name>
             <param-value></param-value>
@@ -121,7 +121,7 @@
     <!--
     <filter>
         <filter-name>ProxyFilter</filter-name>
-        <filter-class>org.apache.chemistry.opencmis.server.filter.ProxyFilter</filter-class>
+        <filter-class>gov.opm.opis.chemistry.opencmis.server.filter.ProxyFilter</filter-class>
         <init-param>
             <param-name>trustedProxies</param-name>
             <param-value>10\.\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|169\.254\.\d{1,3}\.\d{1,3}|127\.\d{1,3}\.\d{1,3}\.\d{1,3}</param-value>
@@ -198,7 +198,7 @@
 
     <servlet>
         <servlet-name>cmisws10</servlet-name>
-        <servlet-class>org.apache.chemistry.opencmis.server.async.impl.webservices.AsyncCmisWebServicesServlet</servlet-class>
+        <servlet-class>gov.opm.opis.chemistry.opencmis.server.async.impl.webservices.AsyncCmisWebServicesServlet</servlet-class>
         <init-param>
             <description>CMIS version of this endpoint</description>
             <param-name>cmisVersion</param-name>
@@ -217,7 +217,7 @@
 
     <servlet>
         <servlet-name>cmisws11</servlet-name>
-        <servlet-class>org.apache.chemistry.opencmis.server.async.impl.webservices.AsyncCmisWebServicesServlet</servlet-class>
+        <servlet-class>gov.opm.opis.chemistry.opencmis.server.async.impl.webservices.AsyncCmisWebServicesServlet</servlet-class>
         <init-param>
             <description>CMIS version of this endpoint</description>
             <param-name>cmisVersion</param-name>
@@ -236,12 +236,12 @@
 
     <servlet>
         <servlet-name>cmisatom10</servlet-name>
-        <servlet-class>org.apache.chemistry.opencmis.server.async.impl.atompub.AsyncCmisAtomPubServlet</servlet-class>
+        <servlet-class>gov.opm.opis.chemistry.opencmis.server.async.impl.atompub.AsyncCmisAtomPubServlet</servlet-class>
         <init-param>
             <param-name>callContextHandler</param-name>
-            <param-value>org.apache.chemistry.opencmis.server.shared.BasicAuthCallContextHandler</param-value>
-            <!-- <param-value>org.apache.chemistry.opencmis.server.shared.UserPrincipalCallContextHandler</param-value> -->
-            <!-- <param-value>org.apache.chemistry.opencmis.server.shared.AttributeCallContextHandler</param-value> -->
+            <param-value>gov.opm.opis.chemistry.opencmis.server.shared.BasicAuthCallContextHandler</param-value>
+            <!-- <param-value>gov.opm.opis.chemistry.opencmis.server.shared.UserPrincipalCallContextHandler</param-value> -->
+            <!-- <param-value>gov.opm.opis.chemistry.opencmis.server.shared.AttributeCallContextHandler</param-value> -->
         </init-param>
         <init-param>
             <description>CMIS version of this endpoint</description>
@@ -261,12 +261,12 @@
 
     <servlet>
         <servlet-name>cmisatom11</servlet-name>
-        <servlet-class>org.apache.chemistry.opencmis.server.async.impl.atompub.AsyncCmisAtomPubServlet</servlet-class>
+        <servlet-class>gov.opm.opis.chemistry.opencmis.server.async.impl.atompub.AsyncCmisAtomPubServlet</servlet-class>
         <init-param>
             <param-name>callContextHandler</param-name>
-            <param-value>org.apache.chemistry.opencmis.server.shared.BasicAuthCallContextHandler</param-value>
-            <!-- <param-value>org.apache.chemistry.opencmis.server.shared.UserPrincipalCallContextHandler</param-value> -->
-            <!-- <param-value>org.apache.chemistry.opencmis.server.shared.AttributeCallContextHandler</param-value> -->
+            <param-value>gov.opm.opis.chemistry.opencmis.server.shared.BasicAuthCallContextHandler</param-value>
+            <!-- <param-value>gov.opm.opis.chemistry.opencmis.server.shared.UserPrincipalCallContextHandler</param-value> -->
+            <!-- <param-value>gov.opm.opis.chemistry.opencmis.server.shared.AttributeCallContextHandler</param-value> -->
         </init-param>
         <init-param>
             <description>CMIS version of this endpoint</description>
@@ -286,12 +286,12 @@
 
     <servlet>
         <servlet-name>cmisbrowser</servlet-name>
-        <servlet-class>org.apache.chemistry.opencmis.server.async.impl.browser.AsyncCmisBrowserBindingServlet</servlet-class>
+        <servlet-class>gov.opm.opis.chemistry.opencmis.server.async.impl.browser.AsyncCmisBrowserBindingServlet</servlet-class>
         <init-param>
             <param-name>callContextHandler</param-name>
-            <param-value>org.apache.chemistry.opencmis.server.impl.browser.token.TokenCallContextHandler</param-value>
-            <!-- <param-value>org.apache.chemistry.opencmis.server.shared.UserPrincipalCallContextHandler</param-value> -->
-            <!-- <param-value>org.apache.chemistry.opencmis.server.shared.AttributeCallContextHandler</param-value> -->
+            <param-value>gov.opm.opis.chemistry.opencmis.server.impl.browser.token.TokenCallContextHandler</param-value>
+            <!-- <param-value>gov.opm.opis.chemistry.opencmis.server.shared.UserPrincipalCallContextHandler</param-value> -->
+            <!-- <param-value>gov.opm.opis.chemistry.opencmis.server.shared.AttributeCallContextHandler</param-value> -->
         </init-param>
         <!--
         <init-param>
@@ -306,7 +306,7 @@
 
     <servlet>
         <servlet-name>cmisendpoints</servlet-name>
-        <servlet-class>org.apache.chemistry.opencmis.server.impl.endpoints.SimpleCmisEndpointsDocumentServlet</servlet-class>
+        <servlet-class>gov.opm.opis.chemistry.opencmis.server.impl.endpoints.SimpleCmisEndpointsDocumentServlet</servlet-class>
         <init-param>
             <param-name>template</param-name>
             <param-value>/WEB-INF/cmis-endpoints.json</param-value>

@@ -21,10 +21,10 @@
 # TCK group class list. 
 ###############################################################
 
-org.apache.chemistry.opencmis.tck.tests.basics.BasicsTestGroup
-org.apache.chemistry.opencmis.tck.tests.types.TypesTestGroup
-org.apache.chemistry.opencmis.tck.tests.crud.CRUDTestGroup
-org.apache.chemistry.opencmis.tck.tests.versioning.VersioningTestGroup
-org.apache.chemistry.opencmis.tck.tests.filing.FilingTestGroup
-org.apache.chemistry.opencmis.tck.tests.control.ControlTestGroup
-org.apache.chemistry.opencmis.tck.tests.query.QueryTestGroup
+gov.opm.opis.chemistry.opencmis.tck.tests.basics.BasicsTestGroup
+gov.opm.opis.chemistry.opencmis.tck.tests.types.TypesTestGroup
+gov.opm.opis.chemistry.opencmis.tck.tests.crud.CRUDTestGroup
+gov.opm.opis.chemistry.opencmis.tck.tests.versioning.VersioningTestGroup
+gov.opm.opis.chemistry.opencmis.tck.tests.filing.FilingTestGroup
+gov.opm.opis.chemistry.opencmis.tck.tests.control.ControlTestGroup
+gov.opm.opis.chemistry.opencmis.tck.tests.query.QueryTestGroup
