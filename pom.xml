@@ -37,19 +37,7 @@
 	<version>${global.version}</version>
 	<packaging>pom</packaging>
 
-	<organization>
-		<name>KGS Software GmbH</name>
-		<url>https://kgs-software.com/</url>
-	</organization>
-
-	<url>https://kgs-software.com/en/products#cmis</url>
-
-	<ciManagement>
-		<system>GitHub Workflows</system>
-		<url>
-			https://github.com/kgs-software/chemistry-opencmis/tree/main/.github/workflows</url>
-	</ciManagement>
-	<inceptionYear>2009</inceptionYear>
+	<inceptionYear>2025</inceptionYear>
 	<description>
 		Chemistry OpenCMIS is an open source implementation of the OASIS CMIS
 		specification.
@@ -65,10 +53,10 @@
 
 	<scm>
 		<connection>
-			scm:git:https://github.com/kgs-software/chemistry-opencmis.git</connection>
+			scm:git:https://github.com/pospers/opis-chemistry.git</connection>
 		<developerConnection>
-			scm:git:https://github.com/kgs-software/chemistry-opencmis.git</developerConnection>
-		<url>https://github.com/kgs-software/chemistry-opencmis</url>
+			scm:git:https://github.com/pospers/opis-chemistry.git</developerConnection>
+		<url>https://github.com/pospers/opis-chemistry.git</url>
 	</scm>
 
 	<distributionManagement>
@@ -81,12 +69,7 @@
 			<url>${env.DISTRIBUTION_SNAPSHOT_URL}</url>
 		</snapshotRepository>
 	</distributionManagement>
-
-	<issueManagement>
-		<system>Jira</system>
-		<url>https://kgs-software.atlassian.net/servicedesk/customer/portals</url>
-	</issueManagement>
-
+	
 	<!-- Project Environment -->
 	<modules>
 		<module>chemistry-opencmis-commons/chemistry-opencmis-commons-api</module>
